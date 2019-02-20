@@ -1,25 +1,34 @@
 
-from products import Products
+from products import Product
 
 class ShoppingCart:
 
-    def __init__(self, products):
-        self.products = products
+    def __init__(self):
+        self.products = []
 
-    def add (self, product):
+    def add_item (self, products):
         self.products.append(products)
 
-    def remove(self, product):
+    def remove_item(self, products):
         self.products.remove(products)
 
     def before_tax_total(self):
-        before_tax = 0
+        result = 0
         for product in self.products:
-            before_tax += products.base_price
-        return before_tax
+            result += products.base_price
+        return result
 
     def after_tax_total(self):
-        after_tax = 0
-        for product in self.prodcuts:
-            after_tax += products.price()
-        return after_tax
+        result = 0
+        for product in self.products:
+            result += products.base_price + products.base_price * products.tax_rate
+        return result
+
+
+# bananas = Product('bananas', 0.25)
+# hot_sauce = Product('Franks', 4.99, 0.13)
+# whiskey = Product('crown-royal', 25.00)
+shopping_cart = ShoppingCart()
+shopping_cart.add_item(Product('bananas', 0.25))
+shopping_cart.add_item(Product('Franks', 4.99, 0.13))
+shopping_cart.add_item(Product('crown-royal', 25.00, 0.25))
