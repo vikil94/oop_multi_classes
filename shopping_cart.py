@@ -1,12 +1,13 @@
 
 from products import Product
 
+
 class ShoppingCart:
 
     def __init__(self):
         self.products = []
 
-    def add_item (self, products):
+    def add_item(self, products):
         self.products.append(products)
 
     def remove_item(self, products):
@@ -15,13 +16,13 @@ class ShoppingCart:
     def before_tax_total(self):
         result = 0
         for product in self.products:
-            result += products.base_price
+            result += product.base_price
         return result
 
     def after_tax_total(self):
         result = 0
         for product in self.products:
-            result += products.base_price + products.base_price * products.tax_rate
+            result += product.base_price + product.base_price * product.tax
         return result
 
 
@@ -32,3 +33,5 @@ shopping_cart = ShoppingCart()
 shopping_cart.add_item(Product('bananas', 0.25))
 shopping_cart.add_item(Product('Franks', 4.99, 0.13))
 shopping_cart.add_item(Product('crown-royal', 25.00, 0.25))
+print(shopping_cart.before_tax_total())
+print(shopping_cart.after_tax_total())
